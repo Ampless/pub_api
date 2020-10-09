@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:schttp/schttp.dart';
+import 'package:version/version.dart';
 
 final _http = ScHttpClient();
 
 class PubVersion {
-  String version, archiveUrl;
+  Version version;
+  String archiveUrl;
   DateTime published;
   //TODO: parse
   dynamic pubspec;
@@ -13,14 +15,14 @@ class PubVersion {
   PubVersion(this.version, this.archiveUrl, this.published, this.pubspec);
 
   static PubVersion fromJson(dynamic json) => PubVersion(
-        json['version'],
+        Version.parse(json['version']),
         json['archive_url'],
         DateTime.parse(json['published']),
         json['pubspec'],
       );
 
   @override
-  String toString() => version;
+  String toString() => version.toString();
 }
 
 class PubPackage {
