@@ -1,6 +1,6 @@
-name: pub-api
+name: pub_api
 description: A package to use Pub's API.
-homepage: https://github.com/Ampless/pub-api
+homepage: https://github.com/Ampless/pub_api
 
 version: 0.0.1
 
