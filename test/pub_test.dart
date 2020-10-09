@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../bin/pub.dart';
+import '../lib/pub_api.dart';
 
 main() {
   test('pub test', () async {

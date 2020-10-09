@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Made the package actually work.
+
 ## 0.0.2
 
 * Made the versions SemVers.
