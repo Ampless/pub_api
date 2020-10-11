@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:pub_semver/pub_semver.dart';
 import 'package:schttp/schttp.dart';
-import 'package:version/version.dart';
 
 final _http = ScHttpClient();
 

@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Switched from `version` to `pub_semver` for versions, because it's the standard.
+
 ## 0.0.3
 
 * Made the package actually work.
