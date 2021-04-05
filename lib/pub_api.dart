@@ -32,10 +32,8 @@ class PubPackage {
 
   PubPackage(this.name, this.latest, this.versions);
 
-  static Future<PubPackage> fromName(String name) async =>
-      fromJson(jsonDecode(await _http.get(
-        Uri.parse('https://pub.dev/api/packages/$name'),
-      )));
+  static Future<PubPackage> fromName(String name) async => fromJson(
+      jsonDecode(await _http.get('https://pub.dev/api/packages/$name')));
 
   static PubPackage fromJson(dynamic json) {
     var v = <PubVersion>[];
