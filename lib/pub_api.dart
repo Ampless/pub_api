@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:schttp/schttp.dart';
 
-final _http = ScHttpClient();
+const String _defaultPubServer = 'https://pub.dartlang.org';
 
 class PubVersion {
   Version version;
@@ -32,14 +32,18 @@ class PubPackage {
 
   PubPackage(this.name, this.latest, this.versions);
 
-  static Future<PubPackage> fromName(String name) async => fromJson(
-      jsonDecode(await _http.get('https://pub.dev/api/packages/$name')));
+  static Future<PubPackage> fromName(
+    String name, {
+    String server = _defaultPubServer,
+    String userAgent = 'pub_api/0.0.6 (+https://github.com/Ampless/pub_api)',
+  }) async =>
+      fromJson(jsonDecode(await ScHttpClient(userAgent: userAgent).get(
+        'https://pub.dev/api/packages/$name',
+        headers: {'Accept': 'application/vnd.pub.v2+json'},
+      )));
 
   static PubPackage fromJson(dynamic json) {
-    var v = <PubVersion>[];
-    for (final version in json['versions']) {
-      v.add(PubVersion.fromJson(version));
-    }
+    final v = json['versions'].map((v) => PubVersion.fromJson(v));
     return PubPackage(json['name'], PubVersion.fromJson(json['latest']), v);
   }
 

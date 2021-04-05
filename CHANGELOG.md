@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Compliance with the Hosted Pub Repository Specification Version 2
+
 ## 0.0.5
 
 * Null-safety and updated dependencies
