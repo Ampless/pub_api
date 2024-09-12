@@ -35,15 +35,19 @@ class PubPackage {
   static Future<PubPackage> fromName(
     String name, {
     String server = _defaultPubServer,
-    String userAgent = 'pub_api/0.0.6 (+https://github.com/Ampless/pub_api)',
+    // this is a pain in the butt 
+    // but dart doesn't really have that kind of reflection
+    String userAgent = 'pub_api/0.0.7 (+https://github.com/Ampless/pub_api)',
   }) async =>
       fromJson(jsonDecode(await ScHttpClient(userAgent: userAgent).get(
-        'https://pub.dev/api/packages/$name',
+        '$server/api/packages/$name',
         headers: {'Accept': 'application/vnd.pub.v2+json'},
       )));
 
   static PubPackage fromJson(dynamic json) {
-    final v = json['versions'].map((v) => PubVersion.fromJson(v));
+    final v = json['versions']
+        .map<PubVersion>((v) => PubVersion.fromJson(v))
+        .toList();
     return PubPackage(json['name'], PubVersion.fromJson(json['latest']), v);
   }
 
