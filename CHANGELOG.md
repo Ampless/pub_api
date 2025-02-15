@@ -1,3 +1,14 @@
+## 0.1.0
+
+- The default "hosted-url" (server) is now `pub.dev`.
+- `PubPackage`: add `retracted` and `archiveSha256`.
+- `PubVersion`: proper `pubspec` type.
+- `PubVersion`: `published` is now optional, as it officially doesn't exist.
+- `PubPackage`: add `isDiscontinued`, `replacedBy`, and `advisoriesUpdated`.
+- A lot of documentation.
+- Better tests.
+- `lints 5`.
+
 ## 0.0.7
 
 - Migrate from `pedantic` to `lints`.
@@ -9,7 +20,7 @@
 
 ## 0.0.6
 
-- Compliance with the Hosted Pub Repository Specification Version 2
+- Add `userAgent` to be somewhat spec compliant.
 
 ## 0.0.5
 

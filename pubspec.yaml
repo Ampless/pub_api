@@ -1,6 +1,6 @@
 name: pub_api
 description: A package to use Pub's API.
-version: 0.0.7
+version: 0.1.0
 homepage: https://github.com/Ampless/pub_api
 
 environment:
@@ -11,5 +11,6 @@ dependencies:
   schttp: ^5.0.0
 
 dev_dependencies:
-  lints: ^4.0.0
+  crypto: ^3.0.6
+  lints: ^5.0.0
   test: ^1.25.0
